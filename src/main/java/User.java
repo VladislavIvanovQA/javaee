@@ -1,7 +1,8 @@
-public class User extends Login{
+public class User extends AppUser {
     private String fio;
     private Department department;
     private Position position;
+    private AccessRights accessRights;
     private String number;
     private String email;
     private float salary;
@@ -57,6 +58,14 @@ public class User extends Login{
         this.position = position;
     }
 
+    public AccessRights getAccessRights() {
+        return accessRights;
+    }
+
+    public void setAccessRights(AccessRights accessRights) {
+        this.accessRights = accessRights;
+    }
+
     String getNumber() {
         return number;
     }
@@ -84,14 +93,15 @@ public class User extends Login{
     @Override
     public String toString() {
         return "User{" +
-                "login='" + login + '\'' +
+                ", salary=" + salary +
+                ", login='" + login + '\'' +
                 ", password='" + password + '\'' +
                 ", fio='" + fio + '\'' +
-                ", departmentAndCity='" + department + '\'' +
-                ", position='" + position + '\'' +
+                ", department=" + department +
+                ", position=" + position +
+                ", accessRights=" + accessRights +
                 ", number='" + number + '\'' +
                 ", email='" + email + '\'' +
-                ", salary=" + salary +
                 '}';
     }
 }

@@ -1,4 +1,4 @@
-public class Login{
+public class AppUser {
     String login;
     String password;
 

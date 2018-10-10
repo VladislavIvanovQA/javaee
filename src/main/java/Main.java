@@ -1,5 +1,3 @@
-import java.util.ArrayList;
-
 public class Main {
     public static void main(String[] args) {
         User first = new User("test","test","Тестов Тест Тестович","79000000001",
@@ -46,8 +44,11 @@ public class Main {
         users[5] = sex;
         users[6] = seven;
 
+        new UserAccesses().sort(users);
+
         for (User user : users) {
-            System.out.println(user.getFio() + " работает в должности " + user.getPosition());
+            System.out.println(user.getFio() + " работает в должности " + user.getPosition() +
+                    "с ролью доступа " + user.getAccessRights());
             System.out.println("Относится к отделу " + user.getDepartment().getName());
             System.out.println("В отделе " + user.getDepartment().getName() + " работает "
                     + user.getDepartment().getPersonCount() + " человек.");
@@ -56,6 +57,8 @@ public class Main {
 
         ListUsers menu = new ListUsers();
         menu.showEmployees(users);
+
+
 
     }
 }

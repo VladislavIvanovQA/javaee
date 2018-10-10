@@ -30,4 +30,9 @@ public class Department implements Unit {
     public int getPersonCount() {
         return getUsers().size();
     }
+
+    @Override
+    public String toString() {
+        return "" + name;
+    }
 }
