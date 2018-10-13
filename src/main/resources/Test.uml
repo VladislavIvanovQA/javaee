@@ -3,85 +3,22 @@
   <ID>JAVA</ID>
   <OriginalElement />
   <nodes>
-    <node x="199.99999999999994" y="167.0">User</node>
-    <node x="319.8481601731601" y="926.5">ListUsers</node>
-    <node x="423.4674242424242" y="0.0">Position</node>
-    <node x="0.0" y="442.5">Unit</node>
-    <node x="209.74999999999994" y="0.0">AccessRights</node>
-    <node x="117.84816017316012" y="849.0">Department</node>
-    <node x="268.88365800865796" y="1125.0">Main</node>
+    <node x="0.0" y="0.0">User</node>
+    <node x="0.0" y="647.0">ListUsers</node>
+    <node x="706.0" y="0.0">Position</node>
+    <node x="301.5" y="0.0">Unit</node>
+    <node x="527.0" y="0.0">AccessRights</node>
+    <node x="301.0" y="101.0">Department</node>
   </nodes>
   <notes />
   <edges>
-    <edge source="ListUsers" target="User">
-      <point x="0.0" y="-25.5" />
-      <point x="429.3481601731601" y="829.0" />
-      <point x="401.14285714285717" y="829.0" />
-      <point x="73.14285714285722" y="301.0" />
-    </edge>
-    <edge source="Main" target="User">
-      <point x="48.28571428571428" y="-25.5" />
-      <point x="401.66937229437224" y="1095.0" />
-      <point x="549.3481601731601" y="1095.0" />
-      <point x="549.3481601731601" y="829.0" />
-      <point x="437.7142857142857" y="829.0" />
-      <point x="109.71428571428578" y="301.0" />
-    </edge>
-    <edge source="Main" target="Department">
-      <point x="-48.285714285714334" y="-25.5" />
-      <point x="305.0979437229436" y="1095.0" />
-      <point x="253.59816017316012" y="1095.0" />
-      <point x="45.25" y="103.0" />
-    </edge>
-    <edge source="User" target="Department">
-      <point x="2.8421709430404007E-14" y="301.0" />
-      <point x="328.0" y="819.0" />
-      <point x="280.7481601731601" y="819.0" />
-      <point x="72.39999999999998" y="-103.0" />
-    </edge>
-    <edge source="Department" target="User">
-      <point x="-36.19999999999999" y="-103.0" />
-      <point x="172.14816017316014" y="789.0" />
-      <point x="218.28571428571422" y="789.0" />
-      <point x="-109.71428571428572" y="301.0" />
-    </edge>
-    <edge source="Main" target="Position">
-      <point x="72.42857142857144" y="-25.5" />
-      <point x="425.8122294372294" y="1105.0" />
-      <point x="560.3481601731601" y="1105.0" />
-      <point x="560.3481601731601" y="147.0" />
-      <point x="505.13409090909084" y="147.0" />
-      <point x="32.66666666666664" y="58.5" />
-    </edge>
-    <edge source="Main" target="ListUsers">
-      <point x="24.14285714285711" y="-25.5" />
-      <point x="377.52651515151507" y="1085.0" />
-      <point x="484.0981601731601" y="1085.0" />
-      <point x="54.75" y="25.5" />
-    </edge>
-    <edge source="User" target="Position">
-      <point x="32.0" y="-301.0" />
-      <point x="359.99999999999994" y="137.0" />
-      <point x="439.80075757575753" y="137.0" />
-      <point x="-32.666666666666664" y="58.5" />
-    </edge>
     <edge source="Department" target="Unit">
-      <point x="-72.39999999999998" y="-103.0" />
-      <point x="135.94816017316015" y="829.0" />
-      <point x="90.0" y="829.0" />
+      <point x="0.0" y="-103.0" />
       <point x="0.0" y="25.5" />
     </edge>
-    <edge source="User" target="AccessRights">
-      <point x="-32.0" y="-301.0" />
-      <point x="295.99999999999994" y="147.0" />
-      <point x="310.24999999999994" y="147.0" />
-      <point x="33.5" y="58.5" />
-    </edge>
   </edges>
-  <settings layout="Hierarchic Group" zoom="0.7529538131041891" x="301.5" y="445.5" />
-  <SelectedNodes>
-    <node>Main</node>
-  </SelectedNodes>
+  <settings layout="Hierarchic Group" zoom="0.5861204013377926" x="269.5" y="598.0" />
+  <SelectedNodes />
   <Categories>
     <Category>Fields</Category>
     <Category>Methods</Category>
