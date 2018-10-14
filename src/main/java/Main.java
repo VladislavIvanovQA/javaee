@@ -15,7 +15,7 @@ public class Main {
         User seven = new User("test6","test","Тестов Тест Тестович6","79000000007",
                 "test@test.ru", 7000f);
 
-        first.setPosition(Position.employee);
+
         second.setPosition(Position.hr);
         three.setPosition(Position.accountant);
         four.setPosition(Position.director);
