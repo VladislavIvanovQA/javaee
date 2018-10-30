@@ -1,0 +1,80 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Diagram>
+  <ID>JAVA</ID>
+  <OriginalElement />
+  <nodes>
+    <node x="0.0" y="1375.0">servlet.MaxNumberPhoneServlet</node>
+    <node x="1244.569696969697" y="1168.0">servlet.UsersServlet</node>
+    <node x="1021.0560606060606" y="825.0">servlet.FileUploadServlet</node>
+    <node x="396.0" y="1375.0">servlet.AuthServlet</node>
+    <node x="1.056060606060555" y="748.0">servlet.RegistrationServlet</node>
+    <node x="1397.0560606060606" y="660.0">entity.EnumeratorEntity</node>
+    <node x="650.0560606060606" y="836.0">servlet.ReplaceIOUserServlet</node>
+    <node x="377.05606060606056" y="858.5">servlet.SortById</node>
+    <node x="1103.2727272727273" y="0.0">entity.UserEntity</node>
+    <node x="0.0" y="242.5">servlet.util.Generator</node>
+  </nodes>
+  <notes />
+  <edges>
+    <edge source="servlet.ReplaceIOUserServlet" target="entity.UserEntity">
+      <point x="0.0" y="-48.0" />
+      <point x="825.5560606060606" y="630.0" />
+      <point x="1175.3727272727272" y="630.0" />
+      <point x="-30.899999999999977" y="290.0" />
+    </edge>
+    <edge source="servlet.RegistrationServlet" target="entity.UserEntity">
+      <point x="0.0" y="-136.0" />
+      <point x="179.05606060606056" y="600.0" />
+      <point x="1113.5727272727272" y="600.0" />
+      <point x="-92.70000000000005" y="290.0" />
+    </edge>
+    <edge source="servlet.SortById" target="entity.UserEntity">
+      <point x="0.0" y="-25.5" />
+      <point x="503.55606060606056" y="620.0" />
+      <point x="1154.7727272727273" y="620.0" />
+      <point x="-51.5" y="290.0" />
+    </edge>
+    <edge source="servlet.UsersServlet" target="servlet.SortById">
+      <point x="-137.25" y="-81.0" />
+      <point x="1290.319696969697" y="1148.0" />
+      <point x="503.55606060606056" y="1148.0" />
+      <point x="0.0" y="25.5" />
+    </edge>
+    <edge source="servlet.UsersServlet" target="entity.UserEntity">
+      <point x="-45.75" y="-81.0" />
+      <point x="1381.819696969697" y="1128.0" />
+      <point x="1614.5560606060606" y="1128.0" />
+      <point x="1614.5560606060606" y="620.0" />
+      <point x="1257.7727272727273" y="620.0" />
+      <point x="51.5" y="290.0" />
+    </edge>
+    <edge source="entity.EnumeratorEntity" target="entity.UserEntity">
+      <point x="0.0" y="-224.0" />
+      <point x="1500.5560606060606" y="630.0" />
+      <point x="1237.1727272727271" y="630.0" />
+      <point x="30.899999999999864" y="290.0" />
+    </edge>
+    <edge source="servlet.RegistrationServlet" target="servlet.util.Generator">
+      <point x="-118.66666666666669" y="-136.0" />
+      <point x="60.38939393939381" y="640.0" />
+      <point x="100.5" y="640.0" />
+      <point x="0.0" y="47.5" />
+    </edge>
+    <edge source="servlet.FileUploadServlet" target="entity.UserEntity">
+      <point x="-89.0" y="-59.0" />
+      <point x="1110.0560606060606" y="640.0" />
+      <point x="1195.9727272727273" y="640.0" />
+      <point x="-10.299999999999955" y="290.0" />
+    </edge>
+  </edges>
+  <settings layout="Hierarchic Group" zoom="0.9" x="731.8414666112345" y="989.0139111289031" />
+  <SelectedNodes />
+  <Categories>
+    <Category>Fields</Category>
+    <Category>Methods</Category>
+    <Category>Inner Classes</Category>
+  </Categories>
+  <SCOPE>All</SCOPE>
+  <VISIBILITY>private</VISIBILITY>
+</Diagram>
+

@@ -1,0 +1,10 @@
+1, admin, 12345, Ivanov Vladislav, 9000000001, test@test.ru, Male
+2, user1, 12345, Ivanov Ivan, 9000000002, test1@test.ru, Male
+3, test, 12345, Ivanov Sergey, 9000000003, test2@test.ru, Male
+4, tester, 12345, Ivanov Valera, 9000000004, test3@test.ru, Male
+5, mainAdmin, 12345, Ivanov Vitaliy, 9000000005, test5@test.ru, Male
+6, noname, 12345, Ivanova Anastasia, 9000000006, test6@test.ru, Female
+7, admin1, 12345, Ivanova Alessandra, 9000000007, test7@test.ru, Female
+8, admin2, 12345, Ivanova Yulya, 9000000008, test8@test.ru, Female
+9, test2, 12345, Ivanova Mariya, 9000000009, test9@test.ru, Female
+10, hr, 12345, Ivanova Darya, 9000000010, test19@test.ru, Female
