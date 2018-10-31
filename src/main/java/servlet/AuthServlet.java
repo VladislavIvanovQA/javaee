@@ -12,11 +12,13 @@ import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
+import java.util.logging.Logger;
 
 import static javax.servlet.http.HttpServletResponse.*;
 
 @WebServlet("/auth")
 public class AuthServlet extends HttpServlet {
+    private Logger log = Logger.getLogger(MaxNumberPhoneServlet.class.getName());
 
     @Resource(name = "jdbc/OracleDS")
     private DataSource ds;
@@ -27,29 +29,21 @@ public class AuthServlet extends HttpServlet {
         try (Connection conn = ds.getConnection()){
             boolean isLogin = false;
             boolean isPassword = false;
-            PreparedStatement ps = conn.prepareStatement("select * from USERS");
+            PreparedStatement ps = conn.prepareStatement(
+                    "select * from USERS where ULOGIN = ? and UPASSWORD = ?");
+            ps.setString(1, req.getParameter("login"));
+            ps.setString(2, req.getParameter("password"));
             ResultSet resultSet = ps.executeQuery();
-            while (resultSet.next()){
-                if (req.getParameter("login").equals(
-                        resultSet.getString("ULOGIN"))) {
-                    isLogin = true;
-                    if (req.getParameter("password").equals(
-                            resultSet.getString("UPASSWORD"))) {
-                        isPassword = true;
-                    }
-                }
-            }
-            if (isLogin) {
-                if (isPassword){
-                    resp.setStatus(SC_OK);
-                    resp.getWriter().println("Login success! With " + req.getParameter("login"));
-                }else {
-                    resp.setStatus(SC_BAD_REQUEST);
-                    resp.getWriter().println("Password abort! Try again!");
-                }
-            }else {
-                resp.setStatus(SC_BAD_REQUEST);
-                resp.getWriter().println("Login abort! Try again!");
+            if (resultSet.next()) {
+                resp.getWriter().print(resultSet.getString(1));
+                resp.getWriter().print(resultSet.getString(2));
+                resp.getWriter().print(resultSet.getString(3));
+                resp.getWriter().print(resultSet.getString(4));
+                resp.getWriter().print(resultSet.getString(5));
+                resp.getWriter().print(resultSet.getString(6));
+                resp.getWriter().print(resultSet.getString(7));
+            }else{
+                resp.getWriter().println("Not Found");
             }
         } catch (SQLException e) {
             e.printStackTrace();

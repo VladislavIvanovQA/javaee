@@ -17,24 +17,24 @@ import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.util.ArrayList;
-import java.util.Collections;
 import java.util.Comparator;
+import java.util.List;
 import java.util.logging.Logger;
 
+import static java.nio.charset.StandardCharsets.UTF_8;
 import static javax.servlet.http.HttpServletResponse.SC_FOUND;
 import static javax.servlet.http.HttpServletResponse.SC_OK;
 
 @WebServlet("/users")
-public class UsersServlet extends HttpServlet {
+public class UsersServlet extends HttpServlet implements UsersEntities{
     private Logger log = Logger.getLogger(UsersServlet.class.getName());
 
     @Resource(name = "jdbc/OracleDS")
     private DataSource ds;
 
-    private ArrayList<UserEntity> userEntities = new ArrayList<>();
-
     @Override
     protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+        response.setCharacterEncoding("UTF-8");
         File file = new File("log/result.txt");
         try (Connection conn = ds.getConnection()) {
             PreparedStatement ps = conn.prepareStatement("select * from USERS");
@@ -49,26 +49,26 @@ public class UsersServlet extends HttpServlet {
                         resultSet.getString(6),
                         resultSet.getString(7));
 
-                userEntities.add(user);
+                userEntity.add(user);
             }
         } catch (SQLException e) {
             e.printStackTrace();
         }
 
         response.setStatus(SC_OK);
-        userEntities.sort(new SortById());
+        userEntity.sort(new SortById());
         // TODO: Не могу понять как вевести нормально русские символы..
-        for (UserEntity userEntity : userEntities) {
+        for (UserEntity userEntity : userEntity) {
             response.getWriter().println(userEntity);
         }
         try (FileOutputStream fos = new FileOutputStream(file)){
-            byte[] buffer = userEntities.toString().getBytes();
+            byte[] buffer = userEntity.toString().getBytes(UTF_8);
             fos.write(buffer);
             log.info("Результат файла записан в файл: " +  file.getAbsolutePath());
         }catch (IOException ex){
             ex.printStackTrace();
         }
-        userEntities.clear();
+        userEntity.clear();
     }
 
     @Override
