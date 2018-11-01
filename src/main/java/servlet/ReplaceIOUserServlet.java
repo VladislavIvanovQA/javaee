@@ -26,6 +26,7 @@ public class ReplaceIOUserServlet extends HttpServlet {
             PreparedStatement ps = conn.prepareStatement("select * from USERS");
             ResultSet resultSet = ps.executeQuery();
             resp.setStatus(SC_OK);
+            resp.setContentType("text/html;charset=UTF8");
             while (resultSet.next()) {
                 resp.getWriter().println(new UserEntity(
                         resultSet.getInt(1),
@@ -47,7 +48,7 @@ public class ReplaceIOUserServlet extends HttpServlet {
             CallableStatement ps = conn.prepareCall("{call SETRANDOMIOUSER(?)}");
             ps.setString(1, req.getParameter("newIO"));
             ps.executeUpdate();
-            resp.encodeRedirectURL("/users");
+            resp.setContentType("text/html;charset=UTF8");
         } catch (SQLException e) {
             e.printStackTrace();
         }

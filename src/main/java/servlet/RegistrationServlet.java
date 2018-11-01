@@ -61,7 +61,7 @@ public class RegistrationServlet extends HttpServlet {
         String result = mapper.writeValueAsString(user);
 
         resp.setStatus(SC_CREATED);
-        resp.setCharacterEncoding("UTF-8");
+        resp.setContentType("text/html;charset=UTF8");
         resp.setHeader("Content-type", "application/json");
         try (PrintWriter pw = resp.getWriter()){
             pw.println(result);

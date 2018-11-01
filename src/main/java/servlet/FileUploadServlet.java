@@ -37,6 +37,7 @@ public class FileUploadServlet extends HttpServlet {
 
     @Override
     protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+        request.setCharacterEncoding("UTF-8");
         try (Connection conn = ds.getConnection();
              PreparedStatement ps = conn.prepareStatement(
                      "insert into USERS(USERNO, ULOGIN, UPASSWORD, UIO, UPHONE, UEMAIL, USEX)" +
@@ -95,7 +96,7 @@ public class FileUploadServlet extends HttpServlet {
                 results[i-1] = result;
             }
             response.setStatus(SC_CREATED);
-            response.setCharacterEncoding("UTF-8");
+            response.setContentType("text/html;charset=UTF8");
             response.setHeader("Content-type", "application/json");
             try (PrintWriter pw = response.getWriter()){
                 pw.println(Arrays.toString(results));

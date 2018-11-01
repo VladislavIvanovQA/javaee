@@ -29,6 +29,7 @@ public class MaxNumberPhoneServlet extends HttpServlet {
             ps.registerOutParameter(1, Types.VARCHAR);
             ps.executeUpdate();
             String IOUser = ps.getString(1);
+            resp.setContentType("text/html;charset=UTF8");
             resp.getWriter().println(IOUser);
             try (FileOutputStream fos = new FileOutputStream(file)){
                 byte[] buffer = IOUser.getBytes();

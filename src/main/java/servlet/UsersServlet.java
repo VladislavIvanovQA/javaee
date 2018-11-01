@@ -39,6 +39,7 @@ public class UsersServlet extends HttpServlet implements UsersEntities{
         try (Connection conn = ds.getConnection()) {
             PreparedStatement ps = conn.prepareStatement("select * from USERS");
             ResultSet resultSet = ps.executeQuery();
+            response.setContentType("text/html;charset=UTF8");
             while (resultSet.next()) {
                 UserEntity user = new UserEntity(
                         resultSet.getInt(1),

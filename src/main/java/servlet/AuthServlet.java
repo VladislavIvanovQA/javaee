@@ -14,8 +14,6 @@ import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.util.logging.Logger;
 
-import static javax.servlet.http.HttpServletResponse.*;
-
 @WebServlet("/auth")
 public class AuthServlet extends HttpServlet {
     private Logger log = Logger.getLogger(MaxNumberPhoneServlet.class.getName());
@@ -25,15 +23,13 @@ public class AuthServlet extends HttpServlet {
 
     @Override
     protected void doPost(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
-        req.setCharacterEncoding("UTF-8");
         try (Connection conn = ds.getConnection()){
-            boolean isLogin = false;
-            boolean isPassword = false;
             PreparedStatement ps = conn.prepareStatement(
                     "select * from USERS where ULOGIN = ? and UPASSWORD = ?");
             ps.setString(1, req.getParameter("login"));
             ps.setString(2, req.getParameter("password"));
             ResultSet resultSet = ps.executeQuery();
+            resp.setContentType("text/html;charset=UTF8");
             if (resultSet.next()) {
                 resp.getWriter().print(resultSet.getString(1));
                 resp.getWriter().print(resultSet.getString(2));
