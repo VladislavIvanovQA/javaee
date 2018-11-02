@@ -26,7 +26,6 @@ import org.xml.sax.InputSource;
 public class XML2JSONServlet extends HttpServlet {
     private static final Logger log = Logger.getLogger(XML2JSONServlet.class.getName());
 
-    private static final String fileXml = "/WEB-INF/classes/xml/employee.xml";
     private static final String fileJson = "/WEB-INF/classes/xml/employee.json";
 
     @Override
@@ -78,10 +77,9 @@ public class XML2JSONServlet extends HttpServlet {
             pw.println(listJsonObj);
 
         }
-
-//        users.clear();
-//        useno.clear();
-//        badNum.clear();
-//        listJsonObj.clear();
+        users.clear();
+        useno.clear();
+        badNum.clear();
+        listJsonObj.clear();
     }
 }
