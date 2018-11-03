@@ -5,6 +5,27 @@
          version="3.1">
   <display-name>Archetype Created Web Application</display-name>
 
+  <servlet>
+    <servlet-name>ApplicationService</servlet-name>
+    <servlet-class>gwt.server.ApplicationServiceImpl</servlet-class>
+  </servlet>
+  <servlet-mapping>
+    <servlet-name>ApplicationService</servlet-name>
+    <url-pattern>/Application/ApplicationService</url-pattern>
+  </servlet-mapping>
+  <servlet>
+    <servlet-name>remoteLoggerServiceImpl</servlet-name>
+    <servlet-class>com.allen_sauer.gwt.log.server.RemoteLoggerServlet</servlet-class>
+  </servlet>
+  <servlet-mapping>
+    <servlet-name>remoteLoggerServiceImpl</servlet-name>
+    <url-pattern>/Application/gwt-log</url-pattern>
+  </servlet-mapping>
+
+  <security-role>
+    <role-name>*</role-name>
+  </security-role>
+
   <resource-ref>
     <description>DB Connection</description>
     <res-ref-name>jdbc/OracleDS</res-ref-name>
