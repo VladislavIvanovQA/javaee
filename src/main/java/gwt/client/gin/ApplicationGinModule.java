@@ -4,7 +4,9 @@ import com.google.gwt.inject.client.AbstractGinModule;
 import gwt.client.service.ApplicationService;
 import gwt.client.text.ApplicationConstants;
 import gwt.client.validation.ValidatorFactory.GwtValidator;
+import gwt.client.widget.AuthView.AuthViewUiBinder;
 import gwt.client.widget.MainView.MainViewUiBinder;
+import gwt.client.widget.RegistrationView.RegistrationViewUiBinder;
 import gwt.client.widget.image.ApplicationImages;
 
 public class ApplicationGinModule extends AbstractGinModule {
@@ -12,6 +14,8 @@ public class ApplicationGinModule extends AbstractGinModule {
         bind(ApplicationService.class);
         bind(ApplicationConstants.class);
         bind(MainViewUiBinder.class);
+        bind(RegistrationViewUiBinder.class);
+        bind(AuthViewUiBinder.class);
         bind(GwtValidator.class);
         bind(ApplicationImages.class);
     }
