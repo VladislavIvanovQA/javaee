@@ -4,23 +4,16 @@ import com.google.gwt.i18n.client.Constants;
 
 public interface ApplicationConstants extends Constants {
 
-    @Key("login.label.alt")
-    String login_label_alt();
+    @Key("form.title")
+    String form_titile();
 
-    @Key("logon.success")
-    String logon_success();
+    @Key("form.footer")
+    String form_footer();
 
-    @Key("login.placeholder.alt")
-    String login_placeholder_alt();
+    @Key("form.contact")
+    String form_contact();
 
-    @Key("password.label.alt")
-    String password_label_alt();
+    @Key("form.footer1")
+    String form_footer1();
 
-    @Key("logon.button.alt")
-    String logon_button_alt();
-
-    @Key("form.header")
-    String form_header();
-
-    String title();
 }

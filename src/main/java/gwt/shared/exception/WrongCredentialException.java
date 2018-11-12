@@ -1,6 +1,6 @@
 package gwt.shared.exception;
 
-public class WrongCredentialException extends Exception{
+public class WrongCredentialException extends Exception {
 
     public WrongCredentialException(){}
 

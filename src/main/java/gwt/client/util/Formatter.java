@@ -1,11 +1,17 @@
 package gwt.client.util;
 
 public class Formatter {
-
-    public static String substutute(String text, Object... params){
+    /**
+     * Substitutes the indexed parameters.
+     *
+     * @param text the text
+     * @param params the parameters
+     * @return the new text
+     */
+    public static String substitute(String text, Object... params) {
         for (int i = 0; i < params.length; i++) {
             Object p = params[i];
-            if (p == null){
+            if (p == null) {
                 p = "";
             }
             text = text.replaceAll("\\{" + i + "}", safeRegexReplacement(p.toString()));
@@ -13,10 +19,19 @@ public class Formatter {
         return text;
     }
 
-    public static String safeRegexReplacement(String replacement){
-        if (replacement == null){
+    /**
+     * Replace any \ or $ characters in the replacement string with an escaped \\
+     * or \$.
+     *
+     * @param replacement the regular expression replacement text
+     * @return null if replacement is null or the result of escaping all \ and $
+     * characters
+     */
+    private static String safeRegexReplacement(String replacement) {
+        if (replacement == null) {
             return replacement;
         }
+
         return replacement.replaceAll("\\\\", "\\\\\\\\").replaceAll("\\$", "\\\\\\$");
     }
 }

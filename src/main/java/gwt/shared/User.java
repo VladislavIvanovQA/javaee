@@ -22,4 +22,20 @@ public class User implements IsSerializable {
     @NotNull
     @Size(min = 4, message = "Password must contain at least 4 characters.")
     private String password;
+
+    @NotNull
+    @Size(min = 4, message = "Name and second name must contain at least 4 characters.")
+    private String name;
+
+    @NotNull
+    @Size(max = 10, message = "Phone not must contain at least 10 characters.")
+    private String phone;
+
+    @NotNull
+    @Size(min = 4)
+    private String email;
+
+    @NotNull
+    @Size(min = 2)
+    private String sex;
 }

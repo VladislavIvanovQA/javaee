@@ -21,7 +21,6 @@
     <servlet-name>remoteLoggerServiceImpl</servlet-name>
     <url-pattern>/Application/gwt-log</url-pattern>
   </servlet-mapping>
-
   <security-role>
     <role-name>*</role-name>
   </security-role>

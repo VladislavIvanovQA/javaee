@@ -5,8 +5,9 @@
     <inherits name='com.google.gwt.user.User'/>
     <inherits name="com.google.gwt.user.theme.clean.Clean" />
     <inherits name="org.hibernate.validator.HibernateValidator" />
+    <inherits name="com.google.gwt.xml.XML" />
 
-    <replace-with class="ru.otus.gwt.client.validation.ValidatorFactory">
+    <replace-with class="gwt.client.validation.ValidatorFactory">
         <when-type-is class="javax.validation.ValidatorFactory" />
     </replace-with>
 

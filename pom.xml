@@ -190,7 +190,6 @@
             <groupId>com.jayway.jsonpath</groupId>
             <artifactId>json-path</artifactId>
             <version>${jsonpath.version}</version>
-            <scope>test</scope>
         </dependency>
 
         <dependency>
@@ -403,7 +402,7 @@
                     </execution>
                 </executions>
                 <configuration>
-                    <module>ru.otus.gwt.Application</module>
+                    <module>gwt.Application</module>
                     <extraJvmArgs>
                         -Xss1024K -Xmx1024M -Duser.language=ru -Duser.country=RU -Djavax.xml.parsers.DocumentBuilderFactory=com.sun.org.apache.xerces.internal.jaxp.DocumentBuilderFactoryImpl -Djavax.xml.parsers.SAXParserFactory=com.sun.org.apache.xerces.internal.jaxp.SAXParserFactoryImpl -javaagent:${lombok.lib}=ECJ
                     </extraJvmArgs>

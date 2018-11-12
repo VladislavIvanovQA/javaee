@@ -1,5 +1,9 @@
 package servlet;
 
+import com.google.gson.Gson;
+import entity.UserEntity;
+import org.json.JSONObject;
+
 import javax.annotation.Resource;
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
@@ -13,6 +17,8 @@ import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.util.logging.Logger;
+
+import static com.google.gwt.http.client.Response.*;
 
 @WebServlet("/auth")
 public class AuthServlet extends HttpServlet {
@@ -29,16 +35,24 @@ public class AuthServlet extends HttpServlet {
             ps.setString(1, req.getParameter("login"));
             ps.setString(2, req.getParameter("password"));
             ResultSet resultSet = ps.executeQuery();
-            resp.setContentType("text/html;charset=UTF8");
+            resp.setContentType("application/json;charset=UTF8");
+            UserEntity user = new UserEntity();
+
             if (resultSet.next()) {
-                resp.getWriter().print(resultSet.getString(1));
-                resp.getWriter().print(resultSet.getString(2));
-                resp.getWriter().print(resultSet.getString(3));
-                resp.getWriter().print(resultSet.getString(4));
-                resp.getWriter().print(resultSet.getString(5));
-                resp.getWriter().print(resultSet.getString(6));
-                resp.getWriter().print(resultSet.getString(7));
+                resp.setStatus(SC_ACCEPTED);
+                user.setNumber(resultSet.getLong(1));
+                user.setLogin(resultSet.getString(2));
+                user.setPassword(resultSet.getString(3));
+                user.setName(resultSet.getString(4));
+                user.setPhone(resultSet.getString(5));
+                user.setEmail(resultSet.getString(6));
+                user.setSex(resultSet.getString(7));
+
+                Gson gson = new Gson();
+                Object obj = gson.toJson(user);
+                resp.getWriter().println(obj);
             }else{
+                resp.setStatus(SC_NO_CONTENT);
                 resp.getWriter().println("Not Found");
             }
         } catch (SQLException e) {

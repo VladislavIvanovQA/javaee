@@ -1,21 +1,105 @@
 h1, p, body, html {
-    margin: 0;
-    padding: 0;
+}
+
+
+#header {
+    display: block;
+    background-color: #4f502f;
+    width: 100%;
+    height: 100px;
+    vertical-align: middle;
+}
+
+#header h1 {
+    margin-bottom: 0px;
+}
+
+#header div {
+    display: inline-block;
+}
+
+#logo {
+
+}
+
+#contact {
+    position: fixed;
+    right: 10px;
+    font-family: 'Calibri', serif;
+}
+
+#content {
+    margin: 5px 0 0 0;
+    float: left;
+    width: 100%;
+    height: auto;
 }
 
 label {
-    width: 100px;
-    display: inline-block;
-    text-align: right;
-    margin-top: 5px;
+    width: 100%;
+    display: block;
+    text-align: center;
+    margin-top: 10px;
 }
 
-.firstColumnWidth {
-    width: 100px;
-    display: inline-block;
-    text-align: right;
-    margin-top: 5px;
+nav {
+    display: block;
+    width: 100%;
+    margin: 0 auto 30px;
 }
+
+#horizontal-menu {
+    background-color: #4f502f;
+    display: block;
+    text-align: center;
+}
+
+#horizontal-menu ul {
+    padding: 1em 0;
+    background: #ead499;
+    list-style: none;
+    margin: 0 auto;
+}
+
+#horizontal-menu li {
+    display: inline;
+}
+
+#horizontal-menu a {
+    padding: 1em;
+    background: rgba(230, 228, 207, 0.96);
+    border-right: 1px solid #223e1e99;
+    color: #000000;
+    text-decoration: none;
+    font-family: 'Lora', serif;
+    transition: .5s linear;
+    font-size: 15px;
+}
+
+a:hover {background: #b16da7;}
+
+
+#news {
+    height: 100%;
+    background-color: #ead499;
+    width: 85%;
+    float: left;
+}
+
+#right-menu{
+    background-color: #e5e2cc;
+    height: 100%;
+    display: inline-block;
+    text-align: left;
+    float: left;
+}
+
+/*.firstColumnWidth {*/
+    /*width: 100px;*/
+    /*display: inline-block;*/
+    /*text-align: right;*/
+    /*margin-top: 5px;*/
+/*}*/
 
 .inputWidth {
     width: 200px;
@@ -31,40 +115,15 @@ form.loginForm {
     margin-top: 5px;
 }
 
-#content {
-    margin: 5px;
-}
-
-body {
-    background-color: #EAECE9;
-}
-
 #container {
     width: 100%;
 }
 
-#header {
-    background-color: #FFA500;
-    width: 100%;
-    text-align: center;
-    vertical-align: middle;
-}
-
-#header h1 {
-    margin-bottom: 0px;
-}
-
-#content {
-    float: left;
-    width: 100%;
-    height: 300px;
-}
-
 #footer {
     clear: both;	/*No floating elements are allowed on left or right*/
-    background-color: #FFA500;
+    background-color: #4f502f;
     text-align: center;
-    position: absolute;
+    position: fixed;
     width: 100%;
     bottom: 0;
 }
@@ -73,15 +132,9 @@ body {
     color: red;
 }
 
-.logo {
-    float: right;
-}
-
 .flex-container {
     height: 100%;
     width: 100%;
-    padding: 0;
-    margin: 0;
     display: -webkit-box;
     display: -moz-box;
     display: -ms-flexbox;

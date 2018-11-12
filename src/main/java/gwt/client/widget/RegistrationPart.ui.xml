@@ -1,0 +1,48 @@
+<ui:UiBinder xmlns:ui='urn:ui:com.google.gwt.uibinder'
+             xmlns:g='urn:import:com.google.gwt.user.client.ui'
+             xmlns:elem='urn:import:com.google.gwt.dom.client'>
+    <ui:with field='res' type='gwt.client.text.ApplicationConstants'/>
+    <ui:style>
+        .redButton {
+            font-size: 10px;
+        }
+        .marginTop5px {
+            margin-top: 5px;
+        }
+    </ui:style>
+    <g:VerticalPanel>
+        <g:HorizontalPanel ui:field="loginPanel" addStyleNames="{style.marginTop5px}">
+            <g:Label text="Login" addStyleNames="firstColumnWidth"/>
+            <g:TextBox ui:field="loginTextField" addStyleNames="inputWidth"/>
+        </g:HorizontalPanel>
+        <g:HorizontalPanel ui:field="passwordPanel" addStyleNames="{style.marginTop5px}">
+            <g:Label text="Password" addStyleNames="firstColumnWidth"/>
+            <g:PasswordTextBox ui:field="passwordTextField" addStyleNames="inputWidth"/>
+        </g:HorizontalPanel>
+        <g:HorizontalPanel ui:field="FSPanel" addStyleNames="{style.marginTop5px}">
+            <g:Label text="FIO" addStyleNames="firstColumnWidth"/>
+            <g:TextBox ui:field="fsTextField" addStyleNames="inputWidth"/>
+        </g:HorizontalPanel>
+        <g:HorizontalPanel ui:field="numberPanel" addStyleNames="{style.marginTop5px}">
+            <g:Label text="Number" addStyleNames="firstColumnWidth"/>
+            <g:TextBox ui:field="numberTextField" addStyleNames="inputWidth"/>
+        </g:HorizontalPanel>
+        <g:HorizontalPanel ui:field="emailPanel" addStyleNames="{style.marginTop5px}">
+            <g:Label text="Email" addStyleNames="firstColumnWidth"/>
+            <g:TextBox ui:field="emailTextField" addStyleNames="inputWidth"/>
+        </g:HorizontalPanel>
+        <g:HorizontalPanel ui:field="sexPanel" addStyleNames="{style.marginTop5px}">
+            <g:Label text="Sex" addStyleNames="firstColumnWidth"/>
+            <g:ListBox ui:field="listSex" addStyleNames="firstCloumnWidth">
+                <g:item>Male</g:item>
+                <g:item>Female</g:item>
+            </g:ListBox>
+        </g:HorizontalPanel>
+        <g:HorizontalPanel addStyleNames="{style.marginTop5px}" horizontalAlignment="ALIGN_CENTER" width="100%">
+            <g:Button text="Registration" ui:field="submit" addStyleNames="{style.redButton} submitArea"/>
+        </g:HorizontalPanel>
+        <g:HorizontalPanel>
+            <g:Label ui:field="responseLabel" addStyleNames="{style.marginTop5px}"/>
+        </g:HorizontalPanel>
+    </g:VerticalPanel>
+</ui:UiBinder>

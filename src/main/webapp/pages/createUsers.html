@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    <title id="title"></title>
+    <link type="text/css" rel="stylesheet" href="../css/style.css">
+    <link type="text/css" rel="stylesheet" href="../css/Application.css">
+    <script type="text/javascript" language="javascript" src="../Application/Application.nocache.js"></script>
+</head>
+<body>
+<div id="header">
+    <div id="logo">
+        <a href="../index.html"><img src="../css/images/logo.png" alt="Logo"></a>
+    </div>
+    <div id="contact"></div>
+</div>
+<div id="horizontal-menu">
+    <nav>
+        <ul>
+            <li><a href="../index.html">Главная</a></li>
+            <li><a href="login.html">Вход</a></li>
+            <li><a href="registration.html">Регистрация</a></li>
+            <li><a href="listUser.html">Список пользователей</a></li>
+            <li><a href="createUsers.html">Создание пользователей</a></li>
+        </ul>
+    </nav>
+</div>
+<div id="content">
+    <div class="flex-container">
+        <form enctype="multipart/form-data" action="/upload" method="post">
+            <label for="file" style="width:100%; display: block">
+                Choice file in upload:
+                <input type="file" id="file" name="file" accept=".txt">
+            </label>
+            <input type="submit" value="Upload"/>
+        </form>
+    </div>
+    <table align="center">
+        <tr>
+            <td id="right-menu"></td>
+        </tr>
+    </table>
+    </div>
+</div>
+<div id="footer">
+    <p id="footer1"></p>
+    <p id="footer2"></p>
+</div>
+</body>
+</html>

@@ -1,6 +1,8 @@
 package servlet;
 
+import com.google.gson.Gson;
 import entity.UserEntity;
+import org.json.JSONArray;
 
 import javax.annotation.Resource;
 import javax.servlet.ServletException;
@@ -36,10 +38,12 @@ public class UsersServlet extends HttpServlet implements UsersEntities{
     protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
         response.setCharacterEncoding("UTF-8");
         File file = new File("log/result.txt");
+        List<String> jsonUsers = new ArrayList<>();
+
         try (Connection conn = ds.getConnection()) {
             PreparedStatement ps = conn.prepareStatement("select * from USERS");
             ResultSet resultSet = ps.executeQuery();
-            response.setContentType("text/html;charset=UTF8");
+            response.setContentType("application/json;charset=UTF8");
             while (resultSet.next()) {
                 UserEntity user = new UserEntity(
                         resultSet.getInt(1),
@@ -58,10 +62,14 @@ public class UsersServlet extends HttpServlet implements UsersEntities{
 
         response.setStatus(SC_OK);
         userEntity.sort(new SortById());
-        // TODO: Не могу понять как вевести нормально русские символы..
         for (UserEntity userEntity : userEntity) {
-            response.getWriter().println(userEntity);
+            Gson gson = new Gson();
+            jsonUsers.add(gson.toJson(userEntity));
         }
+
+        JSONArray array = new JSONArray(jsonUsers);
+
+        response.getWriter().println(array);
         try (FileOutputStream fos = new FileOutputStream(file)){
             byte[] buffer = userEntity.toString().getBytes(UTF_8);
             fos.write(buffer);

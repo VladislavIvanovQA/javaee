@@ -11,9 +11,12 @@ import static gwt.client.gin.ApplicationInjector.INSTANCE;
 
 public class ValidatorFactory extends AbstractGwtValidatorFactory {
 
+    /**
+     * Validator marker for the Validation Sample project. Only the classes and groups listed
+     * in the {@link GwtValidation} annotation can be validated.
+     */
     @GwtValidation(User.class)
-    public interface GwtValidator extends Validator{
-
+    public interface GwtValidator extends Validator {
     }
 
     @Override
