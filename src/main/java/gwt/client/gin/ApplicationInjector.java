@@ -9,6 +9,7 @@ import gwt.client.validation.ValidatorFactory.GwtValidator;
 import gwt.client.widget.AuthView.AuthViewUiBinder;
 import gwt.client.widget.MainView.MainViewUiBinder;
 import gwt.client.widget.RegistrationView.RegistrationViewUiBinder;
+import gwt.client.widget.UsersView.UsersViewUiBinder;
 import gwt.client.widget.image.ApplicationImages;
 
 @GinModules(ApplicationGinModule.class)
@@ -20,6 +21,7 @@ public interface ApplicationInjector extends Ginjector {
     ApplicationConstants getConstants();
     MainViewUiBinder getUiBinder();
     RegistrationViewUiBinder getUI();
+    UsersViewUiBinder getUIList();
     AuthViewUiBinder getUIAuth();
     GwtValidator getValidator();
     ApplicationImages getImages();

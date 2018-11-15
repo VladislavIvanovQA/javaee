@@ -16,6 +16,9 @@ import javax.validation.constraints.Size;
 public class User implements IsSerializable {
 
     @NotNull
+    private long number;
+
+    @NotNull
     @Size(min = 4, message = "Login must contain at least 4 characters.")
     private String login;
 

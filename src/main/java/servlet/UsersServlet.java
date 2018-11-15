@@ -3,6 +3,7 @@ package servlet;
 import com.google.gson.Gson;
 import entity.UserEntity;
 import org.json.JSONArray;
+import org.json.JSONObject;
 
 import javax.annotation.Resource;
 import javax.servlet.ServletException;
@@ -62,14 +63,13 @@ public class UsersServlet extends HttpServlet implements UsersEntities{
 
         response.setStatus(SC_OK);
         userEntity.sort(new SortById());
-        for (UserEntity userEntity : userEntity) {
-            Gson gson = new Gson();
-            jsonUsers.add(gson.toJson(userEntity));
-        }
 
-        JSONArray array = new JSONArray(jsonUsers);
 
-        response.getWriter().println(array);
+        JSONObject object = new JSONObject();
+        JSONArray array = new JSONArray(userEntity);
+        object.put("users", array);
+
+        response.getWriter().println(object);
         try (FileOutputStream fos = new FileOutputStream(file)){
             byte[] buffer = userEntity.toString().getBytes(UTF_8);
             fos.write(buffer);

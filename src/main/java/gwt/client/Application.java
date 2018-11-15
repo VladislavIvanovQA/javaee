@@ -8,6 +8,7 @@ import gwt.client.text.ApplicationConstants;
 import gwt.client.widget.AuthView;
 import gwt.client.widget.MainView;
 import gwt.client.widget.RegistrationView;
+import gwt.client.widget.UsersView;
 
 import static gwt.client.gin.ApplicationInjector.INSTANCE;
 
@@ -32,7 +33,20 @@ public class Application implements EntryPoint {
 
     private void initMainSlot(){
         RootPanel.get("right-menu").add(new MainView(service));
-        RootPanel.get("authorization").add(new AuthView(service));
-        RootPanel.get("registration").add(new RegistrationView(service));
+
+        final RootPanel authorization = RootPanel.get("authorization");
+        if (authorization != null) {
+            authorization.add(new AuthView(service));
+        }
+
+        final RootPanel registration = RootPanel.get("registration");
+        if (registration != null) {
+            registration.add(new RegistrationView(service));
+        }
+
+        final RootPanel listUsers = RootPanel.get("listUsers");
+        if (listUsers != null) {
+            listUsers.add(new UsersView(service));
+        }
     }
 }

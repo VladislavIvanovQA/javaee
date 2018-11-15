@@ -23,8 +23,8 @@ h1, p, body, html {
 }
 
 #contact {
-    position: fixed;
-    right: 10px;
+    position: relative;
+    float: right;
     font-family: 'Calibri', serif;
 }
 
@@ -123,7 +123,8 @@ form.loginForm {
     clear: both;	/*No floating elements are allowed on left or right*/
     background-color: #4f502f;
     text-align: center;
-    position: fixed;
+    position: relative;
+    height: 70px;
     width: 100%;
     bottom: 0;
 }
