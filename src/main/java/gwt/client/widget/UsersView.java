@@ -5,7 +5,6 @@ import com.google.gwt.json.client.*;
 import com.google.gwt.uibinder.client.UiBinder;
 import com.google.gwt.uibinder.client.UiField;
 import com.google.gwt.uibinder.client.UiTemplate;
-import com.google.gwt.user.client.Window;
 import com.google.gwt.user.client.ui.Composite;
 import com.google.gwt.user.client.ui.FlexTable;
 import gwt.client.service.ApplicationServiceAsync;
@@ -81,7 +80,7 @@ public class UsersView extends Composite {
         this.service = service;
     }
 
-    public void toList(String jsonStr) {
+    private void toList(String jsonStr) {
 
         JSONValue value = JSONParser.parseStrict(jsonStr);
 

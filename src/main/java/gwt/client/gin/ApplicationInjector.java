@@ -8,6 +8,8 @@ import gwt.client.text.ApplicationConstants;
 import gwt.client.validation.ValidatorFactory.GwtValidator;
 import gwt.client.widget.AuthView.AuthViewUiBinder;
 import gwt.client.widget.MainView.MainViewUiBinder;
+import gwt.client.widget.Item.ItemUiBinder;
+import gwt.client.widget.NewsView.NewsViewUiBinder;
 import gwt.client.widget.RegistrationView.RegistrationViewUiBinder;
 import gwt.client.widget.UsersView.UsersViewUiBinder;
 import gwt.client.widget.image.ApplicationImages;
@@ -19,6 +21,8 @@ public interface ApplicationInjector extends Ginjector {
 
     ApplicationServiceAsync getService();
     ApplicationConstants getConstants();
+    NewsViewUiBinder getNews();
+    ItemUiBinder getItem();
     MainViewUiBinder getUiBinder();
     RegistrationViewUiBinder getUI();
     UsersViewUiBinder getUIList();

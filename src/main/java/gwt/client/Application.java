@@ -3,16 +3,12 @@ package gwt.client;
 import com.google.gwt.core.client.EntryPoint;
 import com.google.gwt.dom.client.Document;
 import com.google.gwt.event.dom.client.KeyCodes;
-import com.google.gwt.event.dom.client.KeyDownEvent;
-import com.google.gwt.event.dom.client.KeyDownHandler;
 import com.google.gwt.user.client.Window;
 import com.google.gwt.user.client.ui.*;
 import gwt.client.service.ApplicationServiceAsync;
 import gwt.client.text.ApplicationConstants;
-import gwt.client.widget.AuthView;
-import gwt.client.widget.MainView;
-import gwt.client.widget.RegistrationView;
-import gwt.client.widget.UsersView;
+import gwt.client.widget.*;
+import gwt.client.widget.NewsView;
 
 import static gwt.client.gin.ApplicationInjector.INSTANCE;
 
@@ -58,6 +54,11 @@ public class Application implements EntryPoint {
 
     private void initMainSlot(){
         RootPanel.get("right-menu").add(new MainView(service));
+
+        final RootPanel news = RootPanel.get("news");
+        if (news != null) {
+            news.add(new NewsView(service));
+        }
 
         final RootPanel authorization = RootPanel.get("authorization");
         if (authorization != null) {
