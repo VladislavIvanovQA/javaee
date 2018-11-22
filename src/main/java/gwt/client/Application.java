@@ -70,6 +70,11 @@ public class Application implements EntryPoint {
             registration.add(new RegistrationView(service));
         }
 
+        final RootPanel createUser = RootPanel.get("createUser");
+        if (createUser != null){
+            createUser.add(new CreateUsersView(service));
+        }
+
         final RootPanel listUsers = RootPanel.get("listUsers");
         if (listUsers != null) {
             listUsers.add(new UsersView(service));

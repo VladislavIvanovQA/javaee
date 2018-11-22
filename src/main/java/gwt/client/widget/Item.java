@@ -35,8 +35,9 @@ public class Item extends Composite {
         return title.getInnerText();
     }
 
-    public void setTitle(String s) {
+    public void setTitle(String s, String href) {
         title.setInnerText(s);
+        title.setAttribute("href", href);
     }
 
     public String getDescription() {

@@ -31,7 +31,7 @@
         </style>
 		<div class="vertical-section">
 			<h4>
-				<span ui:field="title" class='{style.title}'>Go to Google</span>
+				<a ui:field="title" class='{style.title}' />
 			</h4>
 			<div ui:field="description" class='{style.description}'/>
 		</div>

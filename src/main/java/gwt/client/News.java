@@ -12,5 +12,6 @@ import lombok.ToString;
 public class News {
     String id;
     String html;
+    String href;
     String modif_date;
 }

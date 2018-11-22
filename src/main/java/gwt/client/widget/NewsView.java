@@ -8,6 +8,7 @@ import com.google.gwt.json.client.JSONValue;
 import com.google.gwt.uibinder.client.UiBinder;
 import com.google.gwt.uibinder.client.UiField;
 import com.google.gwt.uibinder.client.UiTemplate;
+import com.google.gwt.user.client.Window;
 import com.google.gwt.user.client.ui.*;
 import gwt.client.News;
 import gwt.client.service.ApplicationServiceAsync;
@@ -31,50 +32,34 @@ public class NewsView extends Composite {
 
     protected void onLoad(){
         RequestBuilder builder = new RequestBuilder(RequestBuilder.GET,
-                "https://www.rbc.ru/v10/ajax/main/region/world/publicher/main_main");
+                "/news");
         try {
-            builder.setHeader("Access-Control-Allow-Origin", "*");
-//            builder.setHeader("Access-Control-Allow-Headers", "X-Requested-With");
-//            builder.setHeader("Access-Control-Allow-Headers", "Access-Control-Request-Headers");
-            builder.setHeader("Allow", "GET");
-            builder.setHeader("Content-Type", "application/json;charset=UTF-8");
-//            builder.setHeader("Access-Control-Allow-Credentials", "true");
             builder.sendRequest("", new RequestCallback() {
                 @Override
                 public void onResponseReceived(Request request, Response response) {
-
                     toList(response.getText());
+                    for (int i = 0; i < newsList.size(); i++) {
+                        Item news = new Item();
+                        news.setTitle(newsList.get(i).getHtml(), newsList.get(i).getHref());
+                        news.setDescription(newsList.get(i).getModif_date());
+                        content.add(news);
+                    }
                 }
 
                 @Override
                 public void onError(Request request, Throwable throwable) {
-
+                    for (int i = 0; i < 5; i++) {
+                        Item item = new Item();
+                        item.setTitle("none" + i, "http://google.ru");
+                        item.setDescription("none" + i);
+                        content.add(item);
+                    }
                 }
             });
         } catch (RequestException e) {
             e.printStackTrace();
         }
-
-        if (newsList.size() != 0){
-            for (int i = 0; i < newsList.size(); i++) {
-                Item news = new Item();
-                news.setTitle(newsList.get(i).getId());
-                news.setDescription(newsList.get(i).getHtml());
-                content.add(news);
-            }
-        }else {
-            for (int i = 0; i < 5; i++) {
-                Item item = new Item();
-                item.setTitle("none" + i);
-                item.setDescription("none" + i);
-                content.add(item);
-            }
-        }
-
-
-
     }
-
 
     private static NewsViewUiBinder ourUiBinder = INSTANCE.getNews();
 
@@ -92,18 +77,30 @@ public class NewsView extends Composite {
 
         JSONObject productsObj = value.isObject();
 
-        JSONArray productsArray = productsObj.get("users").isArray();
+        JSONArray productsArray = productsObj.get("items").isArray();
 
         if (productsArray != null) {
-            for (int i = 0; i < productsArray.size(); i++) {
+            for (int i = 1; i < productsArray.size(); i++) {
                 JSONObject jsonValue = productsArray.get(i).isObject();
                 String id = jsonValue.get("id").isString().stringValue();
                 String html = jsonValue.get("html").isString().stringValue();
                 String modif_date = jsonValue.get("modif_date").isString().stringValue();
-                News news = new News(id, html, modif_date);
+                News news = new News(id, searchString(html), searchHref(html), modif_date.substring(0, modif_date.length() - 6));
                 newsList.add(news);
             }
         }
+    }
+
+    private String searchString(String str){
+        int lenght = str.indexOf("<span class=\"main__feed__title\">");
+        int endLenght = str.indexOf("</span>");
+        return str.substring(lenght + 52, endLenght - 17);
+    }
+
+    private String searchHref(String str){
+        int lenght = str.indexOf("href");
+        int endLenght = str.indexOf("main__feed__link");
+        return str.substring(lenght + 6, endLenght - 9);
     }
 
 }

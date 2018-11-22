@@ -5,6 +5,7 @@ import gwt.client.service.ApplicationService;
 import gwt.client.text.ApplicationConstants;
 import gwt.client.validation.ValidatorFactory.GwtValidator;
 import gwt.client.widget.AuthView.AuthViewUiBinder;
+import gwt.client.widget.CreateUsersView;
 import gwt.client.widget.MainView.MainViewUiBinder;
 import gwt.client.widget.NewsView.NewsViewUiBinder;
 import gwt.client.widget.RegistrationView.RegistrationViewUiBinder;
@@ -18,6 +19,7 @@ public class ApplicationGinModule extends AbstractGinModule {
         bind(ItemUiBinder.class);
         bind(NewsViewUiBinder.class);
         bind(MainViewUiBinder.class);
+        bind(CreateUsersView.class);
         bind(RegistrationViewUiBinder.class);
         bind(AuthViewUiBinder.class);
         bind(GwtValidator.class);
