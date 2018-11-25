@@ -9,6 +9,12 @@
         .marginTop5px {
             margin-top: 5px;
         }
+        .blackText {
+            font-family: Arial, Sans-serif;
+            color: #000000;
+            font-size: 11px;
+            text-align: left;
+        }
     </ui:style>
     <g:VerticalPanel>
         <g:HorizontalPanel ui:field="loginP" addStyleNames="{style.marginTop5px}">
@@ -22,5 +28,7 @@
         <g:HorizontalPanel addStyleNames="{style.marginTop5px}" horizontalAlignment="ALIGN_CENTER" width="100%">
             <g:Button text="Login" ui:field="submit" addStyleNames="{style.redButton} submitArea"/>
         </g:HorizontalPanel>
+            <g:Label ui:field = "completionLabel1" addStyleNames="{style.blackText}" />
+            <g:Label ui:field = "completionLabel2" addStyleNames="{style.blackText}" />
     </g:VerticalPanel>
 </ui:UiBinder>

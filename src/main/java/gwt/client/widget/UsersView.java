@@ -35,18 +35,15 @@ public class UsersView extends Composite {
                 @Override
                 public void onResponseReceived(Request request, Response response) {
                     toList(response.getText());
-                    table.setBorderWidth(10);
-                    table.setCellSpacing(10);
 
                     table.getFlexCellFormatter();
-
-                    table.setText(0, 0, "Number");
-                    table.setText(0, 1, "Login");
-                    table.setText(0, 2, "Password");
-                    table.setText(0, 3, "Name");
-                    table.setText(0, 4, "Phone");
-                    table.setText(0, 5, "Email");
-                    table.setText(0, 6, "Sex");
+                    table.setHTML(0, 0, "<b>Number</b>");
+                    table.setHTML(0, 1, "<b>Login</b>");
+                    table.setHTML(0, 2, "<b>Password</b>");
+                    table.setHTML(0, 3, "<b>Name</b>");
+                    table.setHTML(0, 4, "<b>Phone</b>");
+                    table.setHTML(0, 5, "<b>Email</b>");
+                    table.setHTML(0, 6, "<b>Sex</b>");
 
                     for (int i = 0; i < users.size(); i++) {
                         table.setText(i + 1, 0, String.valueOf(users.get(i).getNumber()));

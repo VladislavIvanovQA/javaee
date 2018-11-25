@@ -9,6 +9,12 @@ h1, p, body, html {
     height: 100px;
     vertical-align: middle;
 }
+#header div#searchInput {
+    margin-left: 30px;
+    float: right;
+    display: block;
+    text-anchor: end;
+}
 
 #header h1 {
     margin-bottom: 0px;
@@ -76,8 +82,42 @@ nav {
     font-size: 15px;
 }
 
-a:hover {background: #b16da7;}
+#listUsers {
+    font-family: "Trebuchet MS", Arial, sans-serif;
+    border-collapse: collapse;
+}
 
+#listUsers td, #listUsers th {
+    border: 1px solid #ddd;
+    padding: 8px;
+}
+
+#listUsers tr:nth-child(even){background-color: #f2f2f2;}
+
+#listUsers tr:hover {background-color: #ddd;}
+
+#listUsers th {
+    padding-top: 12px;
+    padding-bottom: 12px;
+    text-align: left;
+    background-color: #4CAF50;
+    color: white;
+}
+
+.contents {
+    height: 100%;
+    background-color: #ead499;
+    width: 85%;
+    float: left;
+}
+
+.vertical-section {
+    background-color: #e5e2cc;
+}
+
+.vertical-section a {
+    text-decoration: none;
+}
 
 #news {
     height: 100%;
@@ -94,12 +134,12 @@ a:hover {background: #b16da7;}
     float: left;
 }
 
-/*.firstColumnWidth {*/
-    /*width: 100px;*/
-    /*display: inline-block;*/
-    /*text-align: right;*/
-    /*margin-top: 5px;*/
-/*}*/
+.firstColumnWidth {
+    width: 100px;
+    display: inline-block;
+    text-align: right;
+    margin: 5px;
+}
 
 .inputWidth {
     width: 200px;
@@ -115,10 +155,6 @@ form.loginForm {
     margin-top: 5px;
 }
 
-#container {
-    width: 100%;
-}
-
 #footer {
     clear: both;	/*No floating elements are allowed on left or right*/
     background-color: #4f502f;
@@ -127,20 +163,4 @@ form.loginForm {
     height: 70px;
     width: 100%;
     bottom: 0;
-}
-
-.errorMessage {
-    color: red;
-}
-
-.flex-container {
-    height: 100%;
-    width: 100%;
-    display: -webkit-box;
-    display: -moz-box;
-    display: -ms-flexbox;
-    display: -webkit-flex;
-    display: flex;
-    align-items: center;
-    justify-content: center;
 }

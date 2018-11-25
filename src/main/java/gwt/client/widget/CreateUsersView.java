@@ -19,6 +19,10 @@ public class CreateUsersView extends Composite {
     public interface CreateUsersViewUiBinder extends UiBinder<HTMLPanel, CreateUsersView> {
     }
 
+    /**
+     * TODO: Не могу все понять как правильно сделать html форму, которая будет принимать файл и отправлять multipart..
+     */
+
 //    @UiField
 //    FileUpload file;
 

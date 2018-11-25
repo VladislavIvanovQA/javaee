@@ -38,6 +38,7 @@ public class Item extends Composite {
     public void setTitle(String s, String href) {
         title.setInnerText(s);
         title.setAttribute("href", href);
+        title.setAttribute("target", "_blank");
     }
 
     public String getDescription() {

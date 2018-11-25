@@ -2,7 +2,10 @@ package gwt.client;
 
 import com.google.gwt.core.client.EntryPoint;
 import com.google.gwt.dom.client.Document;
+import com.google.gwt.event.dom.client.ClickEvent;
+import com.google.gwt.event.dom.client.ClickHandler;
 import com.google.gwt.event.dom.client.KeyCodes;
+import com.google.gwt.http.client.*;
 import com.google.gwt.user.client.Window;
 import com.google.gwt.user.client.ui.*;
 import gwt.client.service.ApplicationServiceAsync;
@@ -17,12 +20,14 @@ public class Application implements EntryPoint {
     private static ApplicationServiceAsync service = INSTANCE.getService();
     private static ApplicationConstants dictionary = INSTANCE.getConstants();
     private static TextBox tb = new TextBox();
+    private static TextArea ta = new TextArea();
 
 
     public void onModuleLoad() {
         initHeaderAndTitle();
         initMainSlot();
         searchText();
+        jsExecutor();
     }
 
     private void searchText(){
@@ -41,6 +46,46 @@ public class Application implements EntryPoint {
             }
         });
         RootPanel.get("searchInput").add(mainPanel);
+    }
+
+    private void jsExecutor(){
+        Button btn = new Button();
+        Button clear = new Button();
+        Label label = new Label();
+        VerticalPanel panel = new VerticalPanel();
+        panel.add(ta);
+        panel.add(btn);
+        panel.add(clear);
+        panel.add(label);
+        ta.setName("text");
+        btn.setText("Отправить");
+        clear.setText("Очистить");
+        btn.addClickHandler(clickEvent -> {
+           if (ta.getText().length() > 1){
+               RequestBuilder builder = new RequestBuilder(RequestBuilder.GET, "/js?text=" + ta.getText());
+               try {
+                   builder.sendRequest(null, new RequestCallback() {
+                       @Override
+                       public void onResponseReceived(Request request, Response response) {
+                            label.setText(response.getText());
+                       }
+
+                       @Override
+                       public void onError(Request request, Throwable throwable) {
+                            Window.alert("Error js not found");
+                       }
+                   });
+               } catch (RequestException e) {
+                   e.printStackTrace();
+               }
+           }
+        });
+        clear.addClickHandler(clickEvent -> label.setText(""));
+        final RootPanel admin = RootPanel.get("adminTools");
+        if (admin != null){
+            admin.add(panel);
+        }
+
     }
 
 

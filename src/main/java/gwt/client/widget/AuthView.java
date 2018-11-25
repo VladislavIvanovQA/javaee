@@ -1,6 +1,7 @@
 package gwt.client.widget;
 
 import com.google.gwt.event.dom.client.ClickEvent;
+import com.google.gwt.event.logical.shared.ValueChangeEvent;
 import com.google.gwt.http.client.*;
 import com.google.gwt.uibinder.client.UiBinder;
 import com.google.gwt.uibinder.client.UiField;
@@ -32,34 +33,68 @@ public class AuthView extends Composite {
     @UiField
     PasswordTextBox passwordText;
 
+    @UiField
+    Button submit;
+
+    @UiField
+    Label completionLabel1, completionLabel2;
+
+    private Boolean tooShort = false;
+
+    @UiHandler("loginText")
+    void handleLoginChange(ValueChangeEvent<String> event){
+        if (event.getValue().length() < 2){
+            completionLabel1.setText("Логин короткий. Введите более 2 символов.");
+            submit.setEnabled(false);
+        }else {
+            tooShort = true;
+            completionLabel1.setText("");
+        }
+    }
+
+
+    @UiHandler("passwordText")
+    void handlePasswordChange(ValueChangeEvent<String> event){
+        if (event.getValue().length() < 2){
+            completionLabel2.setText("Пароль короткий. Введите более 2 символов.");
+            submit.setEnabled(false);
+        }else {
+            tooShort = true;
+            completionLabel2.setText("");
+            submit.setEnabled(true);
+        }
+    }
+
     @UiHandler("submit")
     void clickHandler(ClickEvent env) {
-        StringBuilder string = new StringBuilder();
-        string.append("login=" + loginText.getValue());
-        string.append("&password=" + passwordText.getValue());
-        RequestBuilder builder = new RequestBuilder(RequestBuilder.POST, "/auth");
-        try {
-            builder.setHeader("Content-Type", "application/x-www-form-urlencoded");
-            builder.setRequestData(string.toString());
-            builder.sendRequest(String.valueOf(string), new RequestCallback() {
-                @Override
-                public void onResponseReceived(Request request, Response response) {
-                    if (202 == response.getStatusCode()) {
-                        Window.alert("Success");
-                    }else {
-                        Window.alert("Try again!");
-                        loginText.setText("");
-                        passwordText.setText("");
+        if (tooShort){
+            StringBuilder string = new StringBuilder();
+            string.append("login=" + loginText.getValue());
+            string.append("&password=" + passwordText.getValue());
+            RequestBuilder builder = new RequestBuilder(RequestBuilder.POST, "/auth");
+            try {
+                builder.setHeader("Content-Type", "application/x-www-form-urlencoded");
+                builder.setRequestData(string.toString());
+                builder.sendRequest(String.valueOf(string), new RequestCallback() {
+                    @Override
+                    public void onResponseReceived(Request request, Response response) {
+                        if (202 == response.getStatusCode()) {
+                            Window.alert("Success");
+                        }else {
+                            Window.alert("Try again!");
+                            loginText.setText("");
+                            passwordText.setText("");
+                        }
                     }
-                }
 
-                @Override
-                public void onError(Request request, Throwable throwable) {
-                    Window.alert("Error!");
-                }
-            });
-        } catch (RequestException e) {
-            e.printStackTrace();
+                    @Override
+                    public void onError(Request request, Throwable throwable) {
+                        Window.alert("Error!");
+                    }
+                });
+            } catch (RequestException e) {
+                e.printStackTrace();
+            }
         }
     }
 

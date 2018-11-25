@@ -38,7 +38,7 @@ public class NewsView extends Composite {
                 @Override
                 public void onResponseReceived(Request request, Response response) {
                     toList(response.getText());
-                    for (int i = 0; i < newsList.size(); i++) {
+                    for (int i = 1; i < newsList.size(); i++) {
                         Item news = new Item();
                         news.setTitle(newsList.get(i).getHtml(), newsList.get(i).getHref());
                         news.setDescription(newsList.get(i).getModif_date());
@@ -80,7 +80,7 @@ public class NewsView extends Composite {
         JSONArray productsArray = productsObj.get("items").isArray();
 
         if (productsArray != null) {
-            for (int i = 1; i < productsArray.size(); i++) {
+            for (int i = 0; i < productsArray.size(); i++) {
                 JSONObject jsonValue = productsArray.get(i).isObject();
                 String id = jsonValue.get("id").isString().stringValue();
                 String html = jsonValue.get("html").isString().stringValue();
