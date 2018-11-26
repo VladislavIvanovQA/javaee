@@ -28,6 +28,30 @@ public class Application implements EntryPoint {
         initMainSlot();
         searchText();
         jsExecutor();
+        FileUpload();
+    }
+
+    public void FileUpload() {
+        final FormPanel form = new FormPanel();
+        form.setAction("/upload");
+        form.setEncoding(FormPanel.ENCODING_MULTIPART);
+        form.setMethod(FormPanel.METHOD_POST);
+
+        VerticalPanel panel = new VerticalPanel();
+        form.setWidget(panel);
+
+        FileUpload upload = new FileUpload();
+        upload.setName("file");
+        panel.add(upload);
+
+        panel.add(new Button("Submit", (ClickHandler) event -> form.submit()));
+
+        form.addSubmitCompleteHandler(event -> Window.alert(event.getResults()));
+
+        final RootPanel createUser = RootPanel.get("createUser");
+        if (createUser != null){
+            createUser.add(form);
+        }
     }
 
     private void searchText(){
@@ -113,11 +137,6 @@ public class Application implements EntryPoint {
         final RootPanel registration = RootPanel.get("registration");
         if (registration != null) {
             registration.add(new RegistrationView(service));
-        }
-
-        final RootPanel createUser = RootPanel.get("createUser");
-        if (createUser != null){
-            createUser.add(new CreateUsersView(service));
         }
 
         final RootPanel listUsers = RootPanel.get("listUsers");
