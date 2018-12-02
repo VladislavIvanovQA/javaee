@@ -2,6 +2,6 @@
              xmlns:g='urn:import:com.google.gwt.user.client.ui'
              xmlns:elem='urn:import:com.google.gwt.dom.client'>
     <ui:with field='res' type='gwt.client.text.ApplicationConstants'/>
-    <g:HTMLPanel ui:field="content">
-    </g:HTMLPanel>
+    <g:FlowPanel ui:field="content">
+    </g:FlowPanel>
 </ui:UiBinder>

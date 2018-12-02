@@ -1,5 +1,6 @@
 package gwt.client.widget;
 
+import com.google.gwt.core.client.GWT;
 import com.google.gwt.event.dom.client.ClickEvent;
 import com.google.gwt.http.client.*;
 import com.google.gwt.uibinder.client.UiBinder;
@@ -16,7 +17,7 @@ import static gwt.client.gin.ApplicationInjector.INSTANCE;
 
 public class RegistrationView extends Composite {
     @UiTemplate("RegistrationPart.ui.xml")
-    public interface RegistrationViewUiBinder extends UiBinder<VerticalPanel, RegistrationView> {
+    public interface RegistrationViewUiBinder extends UiBinder<FlowPanel, RegistrationView> {
     }
 
     @UiField
@@ -33,7 +34,6 @@ public class RegistrationView extends Composite {
 
     @UiField
     Label responseLabel;
-
 
     @UiHandler("submit")
     void clickHandler(ClickEvent env){
@@ -66,14 +66,11 @@ public class RegistrationView extends Composite {
         }
     }
 
-    private static RegistrationViewUiBinder ourUiBinder = INSTANCE.getUI();
-
-    private ApplicationServiceAsync service;
+    private static RegistrationViewUiBinder ourUiBinder = GWT.create(RegistrationViewUiBinder.class);
 
     @Inject
-    public RegistrationView(ApplicationServiceAsync service) {
+    public RegistrationView(MainView parent) {
         initWidget(ourUiBinder.createAndBindUi(this));
-        this.service = service;
     }
 
 }

@@ -10,7 +10,7 @@
             margin-top: 5px;
         }
     </ui:style>
-    <g:VerticalPanel>
+    <g:FlowPanel>
         <g:HorizontalPanel ui:field="loginPanel" addStyleNames="{style.marginTop5px}">
             <g:Label text="Login" addStyleNames="firstColumnWidth"/>
             <g:TextBox ui:field="loginTextField" addStyleNames="inputWidth"/>
@@ -44,5 +44,5 @@
         <g:HorizontalPanel>
             <g:Label ui:field="responseLabel" addStyleNames="{style.marginTop5px}"/>
         </g:HorizontalPanel>
-    </g:VerticalPanel>
+    </g:FlowPanel>
 </ui:UiBinder>

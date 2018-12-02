@@ -10,7 +10,7 @@
             margin-top: 5px;
         }
     </ui:style>
-    <g:VerticalPanel>
+    <g:FlowPanel>
         <g:HorizontalPanel ui:field="infoPanelUSD" addStyleNames="{style.marginTop5px}">
             <g:Label ui:field="textUSD" text="defaultTest" addStyleNames="currency"/>
             <g:Label ui:field="valueUSD" text="defaultValue" addStyleNames="currency"/>
@@ -27,5 +27,5 @@
             <g:Label ui:field="textJPY" text="defaultTest" addStyleNames="currency"/>
             <g:Label ui:field="valueJPY" text="defaultValue" addStyleNames="currency"/>
         </g:HorizontalPanel>
-    </g:VerticalPanel>
+    </g:FlowPanel>
 </ui:UiBinder>

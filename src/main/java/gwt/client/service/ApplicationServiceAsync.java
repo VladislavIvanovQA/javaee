@@ -1,9 +1,9 @@
 package gwt.client.service;
 
 import com.google.gwt.user.client.rpc.AsyncCallback;
-import gwt.shared.User;
+import gwt.shared.GwtApplicationException;
 
 public interface ApplicationServiceAsync {
-    void getMessage(String msg, AsyncCallback<String> async);
-    void authorize(User user, AsyncCallback<Void> async);
+    void getCurrencies(AsyncCallback<String> async) throws GwtApplicationException;
+    void getNews(AsyncCallback<String> async) throws GwtApplicationException;
 }

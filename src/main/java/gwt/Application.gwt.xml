@@ -24,6 +24,7 @@
     <entry-point class='gwt.client.Application'/>
     <!-- Specify the app servlets.           -->
     <servlet path='/ApplicationService' class='gwt.server.ApplicationServiceImpl'/>
+    <!--<servlet path="/LoginService" class="gwt.server.LoginServiceImpl"/>-->
 
     <!-- Specify the paths for translatable code-->
     <source path='client'/>

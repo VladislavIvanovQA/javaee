@@ -1,5 +1,6 @@
 package gwt.client.widget;
 
+import com.google.gwt.core.client.GWT;
 import com.google.gwt.http.client.*;
 import com.google.gwt.json.client.*;
 import com.google.gwt.uibinder.client.UiBinder;
@@ -7,8 +8,10 @@ import com.google.gwt.uibinder.client.UiField;
 import com.google.gwt.uibinder.client.UiTemplate;
 import com.google.gwt.user.client.ui.Composite;
 import com.google.gwt.user.client.ui.FlexTable;
+import com.google.gwt.user.client.ui.FlowPanel;
 import gwt.client.service.ApplicationServiceAsync;
 import gwt.shared.User;
+import gwt.shared.dto.UserDTO;
 
 import javax.inject.Inject;
 import java.util.ArrayList;
@@ -19,13 +22,13 @@ import static gwt.client.gin.ApplicationInjector.INSTANCE;
 public class UsersView extends Composite {
 
     @UiTemplate("UsersViewPart.ui.xml")
-    public interface UsersViewUiBinder extends UiBinder<FlexTable, UsersView> {
+    public interface UsersViewUiBinder extends UiBinder<FlowPanel, UsersView> {
     }
 
     @UiField
     FlexTable table;
 
-    private List<User> users = new ArrayList<>();
+    private List<UserDTO> users = new ArrayList<>();
 
     @Override
     protected void onLoad() {
@@ -66,15 +69,11 @@ public class UsersView extends Composite {
         }
     }
 
-    private static UsersViewUiBinder ourUiBinder = INSTANCE.getUIList();
-
-    private ApplicationServiceAsync service;
-
+    private static UsersViewUiBinder ourUiBinder = GWT.create(UsersViewUiBinder.class);
 
     @Inject
-    public UsersView(ApplicationServiceAsync service) {
+    public UsersView(MainView parent) {
         initWidget(ourUiBinder.createAndBindUi(this));
-        this.service = service;
     }
 
     private void toList(String jsonStr) {
@@ -95,7 +94,7 @@ public class UsersView extends Composite {
                 String phone = jsonValue.get("phone").isString().stringValue();
                 String email = jsonValue.get("email").isString().stringValue();
                 String sex = jsonValue.get("sex").isString().stringValue();
-                User user = new User(id, login, pass, name, phone, email, sex);
+                UserDTO user = new UserDTO(id, login, pass, name, phone, email, sex);
                 users.add(user);
             }
         }

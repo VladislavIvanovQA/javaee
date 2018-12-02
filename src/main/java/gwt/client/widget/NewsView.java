@@ -1,5 +1,6 @@
 package gwt.client.widget;
 
+import com.google.gwt.core.client.GWT;
 import com.google.gwt.http.client.*;
 import com.google.gwt.json.client.JSONArray;
 import com.google.gwt.json.client.JSONObject;
@@ -22,13 +23,13 @@ import static gwt.client.gin.ApplicationInjector.INSTANCE;
 
 public class NewsView extends Composite {
     @UiTemplate("NewsViewPart.ui.xml")
-    public interface NewsViewUiBinder extends UiBinder<HTMLPanel, NewsView> {
+    public interface NewsViewUiBinder extends UiBinder<FlowPanel, NewsView> {
     }
 
     private List<News> newsList = new ArrayList<>();
 
     @UiField
-    HTMLPanel content;
+    FlowPanel content;
 
     protected void onLoad(){
         RequestBuilder builder = new RequestBuilder(RequestBuilder.GET,
@@ -61,14 +62,20 @@ public class NewsView extends Composite {
         }
     }
 
-    private static NewsViewUiBinder ourUiBinder = INSTANCE.getNews();
+    private static NewsViewUiBinder ourUiBinder = GWT.create(NewsViewUiBinder.class);
 
-    private ApplicationServiceAsync service;
-
-    @Inject
-    public NewsView(ApplicationServiceAsync service) {
+    public NewsView() {
         initWidget(ourUiBinder.createAndBindUi(this));
-        this.service = service;
+    }
+
+    public void setNews(String json){
+        toList(json);
+        for (int i = 1; i < newsList.size(); i++) {
+            Item news = new Item();
+            news.setTitle(newsList.get(i).getHtml(), newsList.get(i).getHref());
+            news.setDescription(newsList.get(i).getModif_date());
+            content.add(news);
+        }
     }
 
     private void toList(String jsonStr) {

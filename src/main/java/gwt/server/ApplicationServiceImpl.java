@@ -1,27 +1,39 @@
 package gwt.server;
 
+import com.google.gwt.http.client.*;
+import com.google.gwt.user.client.Window;
 import com.google.gwt.user.server.rpc.RemoteServiceServlet;
 import gwt.client.service.ApplicationService;
-import gwt.shared.User;
-import gwt.shared.exception.WrongCredentialException;
-import gwt.shared.validation.ValidationRule;
-
-import javax.servlet.ServletException;
+import gwt.shared.GwtApplicationException;
 
 public class ApplicationServiceImpl extends RemoteServiceServlet implements ApplicationService {
     // Implementation of sample interface method
-    public String getMessage(String msg) {
-        return "Client said: \"" + msg + "\"<br>Server answered: \"Hi!\"";
+    private String text = "";
+
+    @Override
+    public String getCurrencies() {
+        RequestBuilder builder = new RequestBuilder(RequestBuilder.GET, "https://www.cbr-xml-daily.ru/daily_utf8.xml");
+        try{
+            builder.sendRequest(null, new RequestCallback() {
+                @Override
+                public void onResponseReceived(Request request, Response response) {
+                    if (200 == response.getStatusCode()){
+                        text = response.getText();
+                    }
+                }
+                @Override
+                public void onError(Request request, Throwable throwable) {
+                    Window.alert("Error");
+                }
+            });
+        }catch (RequestException e){
+            e.printStackTrace();
+        }
+        return text;
     }
 
     @Override
-    public void authorize(User user) throws WrongCredentialException {
-        if (ValidationRule.isValid(user)){
-            try {
-                getThreadLocalRequest().login(user.getLogin(), user.getPassword());
-            } catch (ServletException e) {
-                throw new WrongCredentialException("Некорректные логин/пароль");
-            }
-        }
+    public String getNews()  throws GwtApplicationException {
+        return "Hello from server news!";
     }
 }
