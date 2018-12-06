@@ -1,6 +1,7 @@
 package gwt.client.widget;
 
 import com.google.gwt.core.client.JavaScriptObject;
+import com.google.gwt.dom.client.Style;
 import com.google.gwt.event.dom.client.KeyCodes;
 import com.google.gwt.event.logical.shared.AttachEvent;
 import com.google.gwt.jsonp.client.JsonpRequestBuilder;
@@ -17,6 +18,7 @@ import gwt.client.News;
 import gwt.client.service.ApplicationServiceAsync;
 import gwt.client.service.LoginServiceAsync;
 import gwt.client.text.ApplicationConstants;
+import gwt.client.widget.image.ApplicationImages;
 import gwt.shared.User;
 
 import java.util.ArrayList;
@@ -53,6 +55,8 @@ public class MainView extends Composite {
     @UiField CurrenciesView currencies;
     @UiField NewsView news;
 
+    @UiField
+    ApplicationImages res;
 
     private void updateUI(){
         formSearch = new VerticalPanel();
@@ -74,6 +78,7 @@ public class MainView extends Composite {
 
         initWidget(ourUiBinder.createAndBindUi(this));
 
+        res.style().ensureInjected();
 
         List<Widget> widgets=new ArrayList<>();
         Label l=new Label();
@@ -86,7 +91,17 @@ public class MainView extends Composite {
         widgets.add(new RegistrationView(this));
         widgets.add(new LoginPanel(this));
         widgets.add(new LogoutPanel(this));
-
+//        Window.addResizeHandler(event -> {
+//            deckPanel.getWidget(
+//                    deckPanel.getVisibleWidget())
+//                    .getParent()
+////                    .getParent()
+////                    .getParent()
+//                    .setHeight(
+//                            (Window.getClientHeight() -
+//                                    menuBar.getOffsetHeight() +
+//                                    Style.Unit.PX.getType()));
+//        });
         widgets.stream().forEach(w->{
             deckPanel.add(w);
         });
@@ -170,16 +185,16 @@ public class MainView extends Composite {
     @UiHandler("currencies")
     public void attachCurrenciesHandler(AttachEvent event){
         try{
-            service.getCurrencies(new AsyncCallback<String>() {
-                @Override
-                public void onSuccess(String result) {
-                    currencies.parseMessage(result);
-                }
-                @Override
-                public void onFailure(Throwable caught) {
-                    Window.alert(caught.getLocalizedMessage());
-                }
-            });
+//            service.getCurrencies(new AsyncCallback<String>() {
+//                @Override
+//                public void onSuccess(String result) {
+//                    currencies.parseMessage(result);
+//                }
+//                @Override
+//                public void onFailure(Throwable caught) {
+//                    Window.alert(caught.getLocalizedMessage());
+//                }
+//            });
         }catch(Exception ex){
             Window.alert(ex.getLocalizedMessage());
         }

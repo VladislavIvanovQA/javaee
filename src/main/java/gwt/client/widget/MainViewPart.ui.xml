@@ -1,18 +1,18 @@
 <ui:UiBinder xmlns:ui='urn:ui:com.google.gwt.uibinder'
              xmlns:g='urn:import:com.google.gwt.user.client.ui'
              xmlns:d='urn:import:gwt.client.widget'>
-    <!--<ui:with field="res" type="gwt.client.widget.image.ApplicationImages"/>-->
+    <ui:with field="res" type="gwt.client.widget.image.ApplicationImages"/>
     <g:HTMLPanel ui:field="mainPanel">
-        <g:DockLayoutPanel width="100%" height="100%">
+        <g:DockLayoutPanel width="100%" height="100%" addStyleNames="{res.style.dockLayoutPanel}">
             <g:west size="200">
-                <g:FlowPanel height="100" width="100">
-                    <g:Anchor href="/"></g:Anchor>
+                <g:FlowPanel height="100" width="100" addStyleNames="{res.style.logoPanel}">
+                    <g:Anchor href="/" addStyleNames="{res.style.logoImg}"></g:Anchor>
                 </g:FlowPanel>
             </g:west>
             <g:north size="30">
                 <g:DockLayoutPanel>
                     <g:center>
-                        <g:FlowPanel ui:field="menuPanel">
+                        <g:FlowPanel ui:field="menuPanel" addStyleNames="{res.style.menuPanel}">
                             <g:MenuBar ui:field="menuBar">
                                 <!--<g:MenuItem ui:field="menuItemMain">Главная</g:MenuItem>-->
                                 <g:MenuItem ui:field="menuItemLogin">Вход</g:MenuItem>
@@ -26,7 +26,7 @@
                     </g:center>
                     <g:east size="400">
                         <g:FlowPanel>
-                            <g:VerticalPanel ui:field="formSearch"  >
+                            <g:VerticalPanel ui:field="formSearch" addStyleNames="{res.style.search_box}" >
                                 <g:DockLayoutPanel height="100%">
                                     <g:center>
                                         <g:FlowPanel>
@@ -34,7 +34,7 @@
                                         </g:FlowPanel>
                                     </g:center>
                                     <g:east size="30">
-                                        <g:SubmitButton></g:SubmitButton>
+                                        <g:SubmitButton addStyleNames="{res.style.search_btn}"></g:SubmitButton>
                                     </g:east>
                                 </g:DockLayoutPanel>
                             </g:VerticalPanel>
@@ -45,7 +45,7 @@
             <g:east size="400"  >
                 <g:DockLayoutPanel width="100%" height="100%">
                     <g:north size="600">
-                        <g:FlowPanel visible="true" width="100%"  height="100%" ui:field="mainCurrenciesSideBar">
+                        <g:FlowPanel visible="true" width="100%"  height="100%" ui:field="mainCurrenciesSideBar" styleName="{res.style.rightFlowPanel}">
                             <d:CurrenciesView ui:field="currencies"/>
                             <d:NewsView ui:field="news"/>
                         </g:FlowPanel>
@@ -55,12 +55,12 @@
             </g:east>
             <g:center>
                 <g:FlowPanel width="100%" height="auto">
-                    <g:DeckPanel ui:field="deckPanel">
+                    <g:DeckPanel ui:field="deckPanel" addStyleNames="{res.style.mainDeckPanel}">
                     </g:DeckPanel>
 
-                    <g:DockLayoutPanel width="100%" height="100pt">
+                    <g:DockLayoutPanel width="100%" height="100pt" addStyleNames="{res.style.footerPanel}">
                         <g:center>
-                            <g:DockLayoutPanel width="100%" height="100%">
+                            <g:DockLayoutPanel width="100%" height="100%" >
                                 <g:center>
                                     <g:FlowPanel height="100%">
                                         <g:HTMLPanel>

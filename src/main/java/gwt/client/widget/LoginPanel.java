@@ -4,6 +4,7 @@ import com.google.gwt.core.client.GWT;
 import com.google.gwt.dom.client.Style;
 import com.google.gwt.event.dom.client.ClickEvent;
 import com.google.gwt.event.logical.shared.ValueChangeEvent;
+import com.google.gwt.http.client.*;
 import com.google.gwt.uibinder.client.UiBinder;
 import com.google.gwt.uibinder.client.UiField;
 import com.google.gwt.uibinder.client.UiHandler;
@@ -88,26 +89,32 @@ public class LoginPanel extends Composite {
             Set<ConstraintViolation<User>> errors = ValidationRule.getErrors(user);
             clearErrors();
             if (errors.isEmpty()){
+                StringBuilder string = new StringBuilder();
+                string.append("login=" + user.getLogin());
+                string.append("&password=" + user.getPassword());
+                RequestBuilder builder = new RequestBuilder(RequestBuilder.POST, "/auth");
                 try {
-                    service.authorize(user, new AsyncCallback<User>() {
+                    builder.setHeader("Content-Type", "application/x-www-form-urlencoded");
+                    builder.setRequestData(string.toString());
+                    builder.sendRequest(String.valueOf(string), new RequestCallback() {
                         @Override
-                        public void onFailure(Throwable caught) {
-                            Window.alert(caught.getLocalizedMessage());
-                        }
-
-                        @Override
-                        public void onSuccess(User user) {
-                            if (user.getSession() != null){
+                        public void onResponseReceived(Request request, Response response) {
+                            if (202 == response.getStatusCode()) {
                                 setupSession(user);
                                 parent.updateLoggedInMenu();
                                 parent.menuItemAdmin.getScheduledCommand().execute();
                             }else {
-                                Window.alert("Неверный логин/пароль");
+                                Window.alert("Try again!");
                             }
                         }
+
+                        @Override
+                        public void onError(Request request, Throwable throwable) {
+                            Window.alert("Error!");
+                        }
                     });
-                }catch (Exception e){
-                    Window.alert("Ошибка входа");
+                } catch (RequestException e) {
+                    e.printStackTrace();
                 }
             }else {
                 errors.stream().forEach(e->{
